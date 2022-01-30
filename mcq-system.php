@@ -55,7 +55,6 @@ final class MCQ_System {
         new Rajan\McqSystem\Assets();
         new Rajan\McqSystem\McqPostType();
         new Rajan\McqSystem\Shortcode();
-        new Rajan\McqSystem\Adminmenu();
     }
 
     /**

@@ -1,19 +1,22 @@
 <h2>MCQ Quiz system</h2>
-<?php if ( empty( $data ) ) { ?>
+<form id="mcq_form">
+<?php
+if ( is_array( $data ) ) {
+    echo '<div>';
+    foreach ( $data as $key => $item ) {
+        echo "<p>{$item['title']}</p>";
+        foreach ( $item['choices'] as $list ) {
+            echo "<input type='radio' name='ans[{$key}]' value='{$list}' > {$list} \n";
+        }
+        echo "<input type='hidden' id='answer-{$key}' value='{$item['answer']}' />";
+        echo '<br /> <br />';
+    }
+    echo '</div>';
 
-<p> No quiz found </p>
-
-<?php } else { ?>
-<form>
-    <?php foreach( $data as $quiz ): ?>
-
-        <h6> <?php print_r( $quiz ); ?> </h6>
-
-        
-
-    <?php endforeach; ?>
-
-    <?php }; ?>
-
-    <input type="s_result" id="s_result">
+} else {
+    echo '<p>No post found</p>';
+}
+?>
+<input type="submit" id="submit_result" value="Show Result" />
 </form>
+<div id="result_container"></div>

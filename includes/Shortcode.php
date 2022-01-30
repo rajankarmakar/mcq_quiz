@@ -32,19 +32,21 @@ class Shortcode {
         wp_enqueue_script( 'handle-shortcode' );
 
         $args = [
-            'post_type' => 'mcq_system',
-            'post_status' => 'publish',
+            'post_type'      => 'mcq_system',
+            'post_status'    => 'publish',
             'posts_per_page' => -1,
         ];
 
         $data = [];
         $the_query = new \WP_Query( $args );
         if ( $the_query->have_posts() ) {
-            while ( $the_query->have_posts() ) : 
+            while ( $the_query->have_posts() ) :
                 $the_query->the_post();
-                $data[]['title'] = the_title();
-                // $data[]['choices'] = get_post_meta( get_the_id(), 'mcq_question' );
-                $data[]['answer'] = get_post_meta( get_the_id(), 'mcq_answer' );
+                $data[] = [
+                    'title'   => get_the_title(),
+                    'choices' => maybe_unserialize( get_post_meta( get_the_id(), 'mcq_question', true ) ),
+                    'answer'  => get_post_meta( get_the_id(), 'mcq_answer', true )
+                ];
             endwhile;
         }
         // return "<div id='react-app'></div>";
