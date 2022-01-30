@@ -1,0 +1,19 @@
+{
+    "name": "rajan/mcq-system",
+    "description": "This is a MCQ System plugin",
+    "type": "wordpress-plugin",
+    "license": "GPL",
+    "autoload": {
+        "psr-4": {
+            "Rajan\\McqSystem\\": "includes/"
+        }
+    },
+    "authors": [
+        {
+            "name": "rajankarmakar",
+            "email": "rajankarmakar@yahoo.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
